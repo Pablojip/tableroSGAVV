@@ -12,7 +12,7 @@ class Materia extends Model
 
 
     public function Activo(){
-        return $this->activo ? '<span class="label label-success">Activo</span>' : '<span class="label label-danger">Inactivo</span>';
+        return  get_label_activo($this->activo);
     }
     
      //scope Query

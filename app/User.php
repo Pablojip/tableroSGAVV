@@ -50,7 +50,7 @@ class User extends Authenticatable
         return $this->roles->nombre == $role ? true : false;
     }
     public function Activo(){
-        return $this->activo ? '<span class="label label-success">Activo</span>' : '<span class="label label-danger">Inactivo</span>';
+        return  get_label_activo($this->activo);
     }
     public function GetRoleSpan(){
         switch ($this->roles->id) {

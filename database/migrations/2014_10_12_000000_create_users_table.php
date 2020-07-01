@@ -18,8 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('nombres');
-            $table->string('apellido_paterno')->nullable();;
-            $table->string('apellido_materno')->nullable();;
+            $table->string('apellido_paterno')->nullable();
+            $table->string('apellido_materno')->nullable();
             //$table->boolean('cambioPassword')->nullable();
             //$table->boolean('confirmacionEmail')->nullable();
             $table->string('codigoConfirmacionEmail')->nullable();

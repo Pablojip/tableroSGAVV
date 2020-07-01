@@ -94,3 +94,11 @@ Route::post('/turno/store', 'TurnoController@store')->name('turnoStore')->middle
 Route::get('/turno/edit/{id}', 'TurnoController@edit')->name('turnoEdit')->middleware('auth', 'role:Administrador');
 Route::post('/turno/update', 'TurnoController@update')->name('turnoUpdate')->middleware('auth', 'role:Administrador');
 Route::get('/turno/detail/{id}', 'TurnoController@show')->name('turnoDetail')->middleware('auth', 'role:Administrador');
+
+//Alumno
+Route::get('/alumno', 'AlumnoController@index')->name('alumnoIndex')->middleware('auth', 'role:Administrador');
+Route::get('/alumno/create', 'AlumnoController@create')->name('alumnoCreate')->middleware('auth', 'role:Administrador');
+Route::post('/alumno/store', 'AlumnoController@store')->name('alumnoStore')->middleware('auth', 'role:Administrador');
+Route::get('/alumno/edit/{id}', 'AlumnoController@edit')->name('alumnoEdit')->middleware('auth', 'role:Administrador');
+Route::post('/alumno/update', 'AlumnoController@update')->name('alumnoUpdate')->middleware('auth', 'role:Administrador');
+Route::get('/alumno/detail/{id}', 'AlumnoController@show')->name('alumnoDetail')->middleware('auth', 'role:Administrador');

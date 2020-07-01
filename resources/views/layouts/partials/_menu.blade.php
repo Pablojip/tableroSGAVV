@@ -25,6 +25,24 @@
               </li>
             </ul>
           </li>
+          <!--Turno -->
+          <li class="">
+              <a href="javascript:;">
+                <span class="title">Alumno</span>
+                <span class=" arrow"></span>
+              </a>
+              <span class="icon-thumbnail"><i class="pg-icon">A</i></span>
+              <ul class="sub-menu">
+                <li class="">
+                  <a href="{{ route("alumnoCreate") }}">Nuevo</a>
+                  <span class="icon-thumbnail">N</span>
+                </li>
+                <li class="">
+                  <a href="{{ route("alumnoIndex") }}">Buscar</a>
+                  <span class="icon-thumbnail">B</span>
+                </li>
+              </ul>
+            </li>
           <!--Materias-->
           <li class="">
             <a href="javascript:;">

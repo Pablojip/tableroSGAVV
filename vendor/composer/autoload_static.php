@@ -492,12 +492,15 @@ class ComposerStaticInitaf0371d5fd34c5511d82792e751624a2
     );
 
     public static $classMap = array (
+        'AlumnoSeeder' => __DIR__ . '/../..' . '/database/seeds/AlumnoSeeder.php',
+        'App\\Alumno' => __DIR__ . '/../..' . '/app/Alumno.php',
+        'App\\BitIniSesion' => __DIR__ . '/../..' . '/app/BitIniSesion.php',
         'App\\CicloEscolar' => __DIR__ . '/../..' . '/app/CicloEscolar.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Grado' => __DIR__ . '/../..' . '/app/Grado.php',
         'App\\Grupo' => __DIR__ . '/../..' . '/app/Grupo.php',
-        'App\\Helpers\\Helper' => __DIR__ . '/../..' . '/app/Helpers/Helpers.php',
+        'App\\Http\\Controllers\\AlumnoController' => __DIR__ . '/../..' . '/app/Http/Controllers/AlumnoController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -538,6 +541,7 @@ class ComposerStaticInitaf0371d5fd34c5511d82792e751624a2
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Cors.php',
         'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/CorsService.php',
+        'BitIniSesionSeeder' => __DIR__ . '/../..' . '/database/seeds/BitIniSesionSeeder.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
         'Brick\\Math\\BigInteger' => __DIR__ . '/..' . '/brick/math/src/BigInteger.php',
         'Brick\\Math\\BigNumber' => __DIR__ . '/..' . '/brick/math/src/BigNumber.php',

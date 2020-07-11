@@ -38,4 +38,32 @@ class Tema extends Model
         if($valor)
             return $query->where('activo',$valor);
     }
+    public $niceNames= [
+        'nombre' => 'nombre',
+        'descripcion' => 'descripción',
+        'activo' => 'activo',
+        'materia_id' => 'materia',
+        'temas' => 'Tema '//tabla_publico
+    ];
+    //bitacora
+    public static function boot() {
+
+        parent::boot();
+        static::created(function($model) {
+            //relaciones
+            $model->materia_id =  $model->materias->nombre;
+            created_model_bitacora($model,null,1,$model->niceNames);
+        });
+        static::updated(function ($model) {
+            $modelOld = $model->getOriginal();
+            $change = $model->getChanges();
+            //relaciones
+            $modelOld['materia_id'] = Materia::find($modelOld['materia_id'])->nombre;
+            $model->materia_id =  $model->materias->nombre;
+            $modelOld['activo'] =  get_label_activo($modelOld['activo']);
+            $model->activo =  get_label_activo($model->activo);
+            created_model_bitacora($model,$modelOld,2,$model->niceNames);
+        });
+
+    }
 }

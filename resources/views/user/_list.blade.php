@@ -24,7 +24,7 @@
                           <p>{{ $user->email }}</p>
                         </td>
                         <td class="v-align-middle">
-                          <p>{!! $user->GetRoleSpan() !!}</p>
+                          <p>{!! $user->roles->GetRoleSpan() !!}</p>
                         </td>
                         <td class="v-align-middle">
                           <p>{!! $user->Activo() !!}</p>

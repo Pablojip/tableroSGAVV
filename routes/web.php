@@ -25,9 +25,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');;
 
+//Mail
+Route::post('/recuperarPassword','MailController@recuperarPassword')->name('mailRecuperar')->middleware('guest');
+Route::post('/recuperarPasswordIn','MailController@recuperarPasswordIn')->name('mailRecuperarIn')->middleware('auth');
+Route::get('/changePassword/{clave}','MailController@changePassword')->name('cambiarPassword');
+Route::post('/putChangePassword','MailController@putChangePassword')->name('putChangePassword');
 
 //user
-
 Route::get('/user', 'UserController@index')->name('usuarioIndex')->middleware('auth', 'role:Administrador');
 //Route::get('/user/_list', 'UserController@filter')->name('usuarioFilter')->middleware('auth', 'role:Administrador');
 Route::get('/user/create', 'UserController@create')->name('usuarioCreate')->middleware('auth', 'role:Administrador');
@@ -35,6 +39,8 @@ Route::post('/user/store', 'UserController@store')->name('usuarioStore')->middle
 Route::get('/user/edit/{id}', 'UserController@edit')->name('usuarioEdit')->middleware('auth', 'role:Administrador');
 Route::post('/user/update', 'UserController@update')->name('usuarioUpdate')->middleware('auth', 'role:Administrador');
 Route::get('/user/detail/{id}', 'UserController@show')->name('usuarioDetail')->middleware('auth', 'role:Administrador');
+Route::get('/user/crateProfile/{id}', 'UserController@createProfile')->name('usuarioCreateProfile')->middleware('auth', 'role:Administrador');
+Route::post('/user/crateProfileStore', 'UserController@createProfileStore')->name('usuarioPerfilStore')->middleware('auth', 'role:Administrador');
 
 //materia
 Route::get('/materia', 'MateriaController@index')->name('materiaIndex')->middleware('auth', 'role:Administrador');
@@ -102,3 +108,19 @@ Route::post('/alumno/store', 'AlumnoController@store')->name('alumnoStore')->mid
 Route::get('/alumno/edit/{id}', 'AlumnoController@edit')->name('alumnoEdit')->middleware('auth', 'role:Administrador');
 Route::post('/alumno/update', 'AlumnoController@update')->name('alumnoUpdate')->middleware('auth', 'role:Administrador');
 Route::get('/alumno/detail/{id}', 'AlumnoController@show')->name('alumnoDetail')->middleware('auth', 'role:Administrador');
+
+//Maestro
+Route::get('/maestro', 'MaestroController@index')->name('maestroIndex')->middleware('auth', 'role:Administrador');
+Route::get('/maestro/create', 'MaestroController@create')->name('maestroCreate')->middleware('auth', 'role:Administrador');
+Route::post('/maestro/store', 'MaestroController@store')->name('maestroStore')->middleware('auth', 'role:Administrador');
+Route::get('/maestro/edit/{id}', 'MaestroController@edit')->name('maestroEdit')->middleware('auth', 'role:Administrador');
+Route::post('/maestro/update', 'MaestroController@update')->name('maestroUpdate')->middleware('auth', 'role:Administrador');
+Route::get('/maestro/detail/{id}', 'MaestroController@show')->name('maestroDetail')->middleware('auth', 'role:Administrador');
+
+//Bitacora
+Route::get('/bitacora', 'BitacoraController@index')->name('bitacoraIndex')->middleware('auth', 'role:Administrador');
+Route::get('/maestro/create', 'MaestroController@create')->name('maestroCreate')->middleware('auth', 'role:Administrador');
+Route::post('/maestro/store', 'MaestroController@store')->name('maestroStore')->middleware('auth', 'role:Administrador');
+Route::get('/maestro/edit/{id}', 'MaestroController@edit')->name('maestroEdit')->middleware('auth', 'role:Administrador');
+Route::post('/maestro/update', 'MaestroController@update')->name('maestroUpdate')->middleware('auth', 'role:Administrador');
+Route::get('/maestro/detail/{id}', 'MaestroController@show')->name('maestroDetail')->middleware('auth', 'role:Administrador');

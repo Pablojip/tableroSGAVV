@@ -39,7 +39,7 @@
               </div>
             </div>
             <div class="m-b-5 m-t-30">
-              <a href="#" class="normal">¿Olvido su contraseña?</a>
+              <a href="#" class="normal" data-target="#modalFillIn" data-toggle="modal">¿Olvido su contraseña?</a>
             </div>
           <!--  <div>
               <a href="#" class="normal">Not a member yet? Signup now.</a>
@@ -60,6 +60,46 @@
        
       </div>
     
+
+      <form class="sendEmail-valid">
+          <div class="modal fade fill-in" id="modalFillIn" tabindex="-1" role="dialog" aria-hidden="true">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              <i class="pg-close"></i>
+            </button>
+            <div class="modal-dialog ">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="text-left p-b-5">Escribe el correo asociado al sistema </h5>
+                </div>
+                <div class="modal-body form-valid">
+                  <div class="row">
+                    <div class="col-md-9 ">
+                      <input type="text" id="correoSend" name="correoSend" placeholder="Escribe tu correo aqui" class="form-control input-lg" id="icon-filter" name="icon-filter">
+                    </div>
+                    <div class="col-md-3" >
+                      <button type="button" class="btn-lg btn-primary mt-1" id="btnRememberPassword"> Enviar </button>
+                    </div>
+                  </div>
+                  <p class="text-left sm-text-center hinted-text p-t-10 p-r-10">Enviaremos a tu correo las instrucciones para recuperar la cuenta.</p>
+                  <h4 id="EmailMessage" class="sm-text-center text-info" style="text-align: center;"></h4>
+                </div>
+                <div class="modal-footer">
+                </div>
+                <!-- PROCESANDO  -->
+                <div id="EmailProgress">
+                    <div class="progress" >
+                        <div class="progress-bar-indeterminate"></div>
+                    </div>
+                    <h3 class="sm-text-center tituloEnvio" style="text-align: center;"></h3>
+                </div>
+                <!-- END PROCESANDO -->
+              </div>
+
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+</form>
 @endsection
 
 
@@ -70,6 +110,7 @@
     <script>
         $(function()
         {
+          $(".progress").hide();
           var message = $('#message');
 
           $('#form-login').validate({
@@ -129,8 +170,37 @@
             
     
           });
+
+         
     
         });
+
+        $('#btnRememberPassword').click(function (e){
+            //Iniciamos el proceso.
+            loadingEmail();
+            // Disable #x
+            $( "#BtnEnviar" ).prop( "disabled", true );
+            $(".progress").show();
+            $(".tituloEnvio").html('Procesando la solicitud...');
+            //$( "#EmailProgress" ).show();
+            //parametros
+            var correo = $("#correoSend").val();
+            var data = { 'correoSend': $("#correoSend").val() }
+            $.post('{{ route("mailRecuperar")}}',data,function(data){
+              if(data.valido){
+                $(".tituloEnvio").html(data.mensaje);
+              }else{
+                $(".tituloEnvio").html(data.mensaje).addClass( "text-danger" );
+              }
+            }).fail(function() {
+              $(".tituloEnvio").addClass( "text-danger" ).html('Ocurrio un error inesperado, por favor contacte al administrador del sistema.');
+            }).always(function() {
+              $(".progress").hide();
+              $( "#BtnEnviar" ).prop( "disabled", false );
+            }); 
+
+          });
+        
         </script>
 	
 @stop

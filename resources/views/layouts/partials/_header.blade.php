@@ -25,8 +25,8 @@
             <div class="dropdown-menu dropdown-menu-right profile-dropdown" role="menu">
             <a href="#" class="dropdown-item"><span>Ingresaste como <br /><b>{{ Auth::user()->nombreCompleto() }}</b></span></a>
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">Mi perfil</a>
-              <a href="#" class="dropdown-item">Cambiar contraseña</a>
+              <a href="{{ route("usuarioCreateProfile",['id' => Auth::user()->id]) }}" class="dropdown-item">Mi perfil</a>
+              <a href="#" id="btnRememberPassword" class="dropdown-item">Cambiar contraseña</a>
               <div class="dropdown-divider"></div>
               <a href="{{ route("logout")  }}" class="dropdown-item"><b>Cerrar Sesion</b></a>
             </div>

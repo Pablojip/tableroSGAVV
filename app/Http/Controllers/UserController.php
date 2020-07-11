@@ -70,6 +70,48 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function createProfile($id)
+    {
+        try{
+            $model = User::find($id);
+            return view('user.create_profile',['model' => $model]);
+
+        }catch(\Exception $e){
+            return view('user.create_profile',['model' => null]);
+        }
+    }
+    public function createProfileStore(Request $request)
+    {
+        try{
+            $id = $request->get('id');
+            if(!$id){
+                $this->respuesta['mensaje'] = "Ocurrio un error al momento de seleccionar tu perfil para la edición.";
+                return $this->respuesta;
+
+            }
+
+            if($this->ExistEmail($request->get('email'),$id)){
+                $this->respuesta['mensaje'] = "El correo eléctronico ya existe por  favor seleccione otro.";
+                return $this->respuesta;
+
+            }
+
+            $model = User::find($id);
+            $model->nombres                = $request->get('nombres');
+            $model->apellido_paterno       = $request->get('apellido_paterno');
+            $model->apellido_materno       = $request->get('apellido_materno');
+            $model->email                  = $request->get('email');
+            $model->save();
+            $this->respuesta['valido']    = true;
+            $this->respuesta['mensaje']   = "Se guardo los  datos de tu perfil: ".$model->nombreCompleto();
+            return $this->respuesta;
+
+        }catch(\Exception $e){
+            $this->respuesta['mensaje'] = $e->getMessage();;
+            return $this->respuesta;
+        }
+    }
     public function create()
     {
         
@@ -149,8 +191,7 @@ class UserController extends Controller
             return view('user.edit',['roles' => $this->getRoles(),'user' => $user]);
 
         }catch(\Exception $e){
-            $this->respuesta['mensaje'] = $e->getMessage();;
-            return $this->respuesta;
+            return view('user.edit',['roles' => $this->getRoles(),'user' => mull, 'errorMsj' => $e->getMessage() ]);
         }
     }
 

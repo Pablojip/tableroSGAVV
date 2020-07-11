@@ -54,6 +54,30 @@
 
         }); 
        
+        $('#btnRememberPassword').click(function (e){
+
+          try{
+              //showLoading();
+              alert('Procesando la solicitud, porfavor espere....','warning');
+              $.post('{{ route("mailRecuperarIn") }}')
+              .done(function(data) {
+                  if(data.valido){
+                    alert(data.mensaje);
+                  }else{
+                    lert(data.mensaje,'danger');
+                  }
+                })
+                .fail(function(e) {
+                  alert('Ocurrio un error inesperado, contacte al administrador.','danger');
+                })
+                .always(function() {
+                  //hideLoading();
+                });
+            }catch(e){
+
+            } 
+
+        });
     </script>
   
     @yield('js')

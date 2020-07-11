@@ -7500,7 +7500,7 @@ body > .pgn-wrapper {
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .modal.stick-up .modal-dialog {
     margin: -5px auto;
   }
@@ -7514,8 +7514,10 @@ body > .pgn-wrapper {
     box-shadow: none;
   }
   .modal .modal-dialog {
-    width: 600px;
+    width: 900px;
+    max-width: 900px;
   }
+ 
   .modal .modal-sm {
     width: 300px;
   }

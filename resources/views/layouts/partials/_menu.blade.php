@@ -25,7 +25,7 @@
               </li>
             </ul>
           </li>
-          <!--Turno -->
+          <!--Alumno -->
           <li class="">
               <a href="javascript:;">
                 <span class="title">Alumno</span>
@@ -39,6 +39,24 @@
                 </li>
                 <li class="">
                   <a href="{{ route("alumnoIndex") }}">Buscar</a>
+                  <span class="icon-thumbnail">B</span>
+                </li>
+              </ul>
+            </li>
+               <!--Maestros -->
+          <li class="">
+              <a href="javascript:;">
+                <span class="title">Maestros</span>
+                <span class=" arrow"></span>
+              </a>
+              <span class="icon-thumbnail"><i class="pg-icon">M</i></span>
+              <ul class="sub-menu">
+                <li class="">
+                  <a href="{{ route("maestroCreate") }}">Nuevo</a>
+                  <span class="icon-thumbnail">N</span>
+                </li>
+                <li class="">
+                  <a href="{{ route("maestroIndex") }}">Buscar</a>
                   <span class="icon-thumbnail">B</span>
                 </li>
               </ul>
@@ -164,6 +182,20 @@
               </li>
               <li class="">
                 <a href="{{ route("turnoIndex") }}">Buscar</a>
+                <span class="icon-thumbnail">B</span>
+              </li>
+            </ul>
+          </li>
+          <!--Bitacora -->
+          <li class="">
+            <a href="javascript:;">
+              <span class="title">Bitacora de registros</span>
+              <span class=" arrow"></span>
+            </a>
+            <span class="icon-thumbnail"><i class="pg-icon">B</i></span>
+            <ul class="sub-menu">
+              <li class="">
+                <a href="{{ route("bitacoraIndex") }}">Buscar</a>
                 <span class="icon-thumbnail">B</span>
               </li>
             </ul>

@@ -10,6 +10,10 @@ $(function() {
 
 });
 
+$(document).ajaxComplete(function() {
+    $('.tooltip_ajax').tooltip();
+});
+
 function fetch_data(pagina,form,lista='#lista'){
     try{
         showLoading();

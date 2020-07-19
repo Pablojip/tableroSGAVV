@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel; 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -124,3 +127,8 @@ Route::post('/maestro/store', 'MaestroController@store')->name('maestroStore')->
 Route::get('/maestro/edit/{id}', 'MaestroController@edit')->name('maestroEdit')->middleware('auth', 'role:Administrador');
 Route::post('/maestro/update', 'MaestroController@update')->name('maestroUpdate')->middleware('auth', 'role:Administrador');
 Route::get('/maestro/detail/{id}', 'MaestroController@show')->name('maestroDetail')->middleware('auth', 'role:Administrador');
+
+
+Route::get('/Excel', 'ExcelController@index')->name('excelIndex')->middleware('auth', 'role:Administrador');;
+Route::get('/Excel/GetTemplate/{id}', 'ExcelController@getTemplate')->name('excelTemplate')->middleware('auth', 'role:Administrador');
+Route::post('/Excel/Import', 'ExcelController@import')->name('excelImport')->middleware('auth', 'role:Administrador');

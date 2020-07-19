@@ -159,7 +159,7 @@ class AlumnoController extends Controller
     }
 
      //metodos necesariosw
-     private function ExistMatricula($matricula,$id=0){
+     public function ExistMatricula($matricula,$id=0){
         if($id != 0){
             return Alumno::where('matricula', '=', $matricula)->where('id','!=',$id)->exists();
         }

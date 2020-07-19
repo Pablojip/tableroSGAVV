@@ -159,7 +159,7 @@ class MaestroController extends Controller
     }
 
      //metodos necesariosw
-     private function Existclave($clave,$id=0){
+     public function Existclave($clave,$id=0){
         if($id != 0){
             return Maestro::where('clave', '=', $clave)->where('id','!=',$id)->exists();
         }

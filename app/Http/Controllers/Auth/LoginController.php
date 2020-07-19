@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Auth;
 
 use App\User;
 
+use Excel;
+use App\Exports\UsersExport;
+
 class LoginController extends Controller
 {
     /*
@@ -52,6 +55,9 @@ class LoginController extends Controller
         $usernew->password = Hash::make('secret');
         $usernew->persona_id = 1;
         $usernew->save();*/
+        //$allData = $this->data->get();
+
+        //$module = $this->module;
         return view('login.login');
 
         

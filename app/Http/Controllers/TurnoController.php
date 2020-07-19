@@ -32,7 +32,7 @@ class TurnoController extends Controller
            
 
         }catch(\Exception $e){
-            $this->respuesta['mensaje'] = $e->getMessage();;
+            $this->respuesta['mensaje'] = $e->getMessage();
             if($request->ajax()){ 
                 return $this->respuesta;
             }
@@ -158,7 +158,7 @@ class TurnoController extends Controller
     }
 
      //metodos necesariosw
-     private function ExistNombre($nombre,$id=0){
+     public function ExistNombre($nombre,$id=0){
         if($id != 0){
             return Turno::where('turno', '=', $nombre)->where('id','!=',$id)->exists();
         }

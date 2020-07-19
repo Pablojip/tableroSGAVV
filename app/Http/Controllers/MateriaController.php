@@ -163,10 +163,13 @@ class MateriaController extends Controller
     }
 
      //metodos necesariosw
-     private function ExistNombre($nombre,$id=0){
+     public function ExistNombre($nombre,$id=0){
         if($id != 0){
             return Materia::where('nombre', '=', $nombre)->where('id','!=',$id)->exists();
         }
         return Materia::where('nombre', '=', $nombre)->exists();
+    }
+    public function getIdByName($nombre){
+        return Materia::where('nombre', '=', $nombre)->first()->id;
     }
 }

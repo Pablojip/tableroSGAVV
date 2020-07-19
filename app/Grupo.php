@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Grupo extends Model
 {
+    protected $fillable = ['grupo'];
     public function Activo(){
         return  get_label_activo($this->activo);
     }

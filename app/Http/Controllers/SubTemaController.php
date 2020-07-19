@@ -178,10 +178,12 @@ class SubTemaController extends Controller
     }
 
     //meotodos
-    private function ExistNombre($nombre,$id=0){
+    public function ExistNombre($nombre,$id=0){
         if($id != 0){
             return SubTema::where('nombre', '=', $nombre)->where('id','!=',$id)->exists();
         }
         return SubTema::where('nombre', '=', $nombre)->exists();
     }
+
+    
 }
